@@ -8,12 +8,12 @@ function Todos(props) {
 
     const todos = [
         {
-            number: 1,
+            id: 1,
             title: 'coffee',
             description:'meet at Costa',
         },
         {
-            number: 2,
+            id: 2,
             title: 'workout',
             description:'gym',
         },
@@ -30,11 +30,11 @@ function Todos(props) {
         console.log(todos);
     }
 
-    const deleteTodo = () => {
-        const number = todos.number;  
-        todos.splice(number, 1);    //find the position
+    const deleteTodo = (e) => {
+        const number = e.target.index;  //find number of todo to be deleted
+        todos.splice(number, 1);    //find the position and remove at that position in the object
         console.log("remove todo");
-        console.log(this.number); //todos number
+        console.log(todos); //todos number    //this works HURRAY!!!! now we need to change the state once deleted and make sure the correct task is deleted/removed from the object:)
     }
 
     
@@ -47,7 +47,7 @@ function Todos(props) {
             {Object.values(todos).map((todo, index) => (
                 <li key={index}>
                     <div>
-                        <span>{todo.number}</span>
+                        <span>{todo.id}</span>
                         <h3>{ todo.title } </h3>
                         <p>{ todo.description }</p>
                     </div>
