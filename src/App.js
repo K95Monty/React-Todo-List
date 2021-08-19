@@ -1,5 +1,5 @@
 import './App.css';
-import Card from './Card';
+import Card from './Components/Card';
 
 function App() {
 
@@ -8,7 +8,6 @@ function App() {
       
       <Card />
       
-
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.todo {
+    background-color: red;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+.todo-content {
+    max-height: 300px;
+    min-height: 150px;
+    overflow-y: auto;
+}
+
+.clicked {
+    display: none;
+}
+
+.active-clicked {
+    display: active;
+}
