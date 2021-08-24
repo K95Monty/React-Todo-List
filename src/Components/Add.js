@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
-import { AiOutlinePlusSquare } from 'react-icons/ai';
-import { IconContext } from "react-icons";
+import './Style/Add.css';
 
 function Add(props) {
     
@@ -14,22 +12,24 @@ const updateTaskValue = (e) => {
 
   const updateDescriptionValue = (e) => {
     setDescription(e.target.value);
-  }
+  }  
 
     return (
-        <IconContext.Provider value={{ color: "blue", size: "2em" }}>
-            <form id="addTask">
+        <div className="form-container">
+            <form id="addTask" onSubmit={props.add}>
                 <label>Task</label>
                     <input type="text" name="task" 
-                    value={task} onChange={updateTaskValue}/>
+                    value={task} onChange={updateTaskValue}
+                    className='new-line'/>
                 
-                <label >Description</label>
+                <label>Description</label>
                     <input type="text" name="description" 
-                        value={description} onChange={updateDescriptionValue}/>
+                        value={description} onChange={updateDescriptionValue}
+                        className='new-line' />
 
-                <div onClick={props.add}><AiOutlinePlusSquare /></div>
+                <input type="submit" value="Add Task"/>
             </form>
-        </IconContext.Provider>
+        </div>
     );
 }
 
