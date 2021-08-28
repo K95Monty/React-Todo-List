@@ -1,14 +1,18 @@
 import './App.css';
-import Card from './Components/Card';
+import Todos from './Components/Todos';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
+
+import './Components/Style/Card.css'
 
 function App() {
 
   return (
     <div className="App">
       <Header />
-      <Card />
+      <div className="card">
+        <Todos />
+      </div>
       <Footer />
     </div>
   );

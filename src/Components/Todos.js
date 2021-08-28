@@ -1,10 +1,13 @@
 import React from 'react';
 import Todo from './Todo';
+import Add from './Add';
 
-import './Style/Todos.css'
+import './Style/Todos.css';
+
 
 function Todos(props) {
-    const todos = [
+
+    const todosList = [
         {
             id: "1",
             title: 'coffee',
@@ -25,8 +28,8 @@ function Todos(props) {
             title: 'garden',
             description:'water the plants',
         },
-      ];
-
+    ];
+    
     const addTodoHandler = () => { //we need a formula to check if the values are empty
         console.log("added new todo")
         // const number = todos.length + 1;
@@ -40,29 +43,32 @@ function Todos(props) {
         // console.log(todos);
     }
 
-    const deleteTodoHandler = () => {
-        console.log("deleted todo")
+    const deleteTodoHandler = (id) => {
         
-        // const number = 1//find id number of todo to be deleted
-        // todos.splice(number, 1);    //find the position and remove at that position in the object
-        // console.log("remove todo");
-        // console.log(number); //todos number    
-        // //this works HURRAY!!!! now we need to change the state once deleted and make sure the correct task is deleted/removed from the object:)
+        // here we are filtering - the idea is remove an item from the todo array on a button click
+    const removeItem = todosList.filter((todo) => {
+        // return the rest of the todos that don't match the item we are deleting
+        return todo.id !== id;
+      });
+      // removeItem returns a new array - so now we are setting the todos to the new array
+    //   setTodos(removeItem);
+        
     }
 
     return (
-        <div className="todos">
-            {todos.map(todo => (
-                <Todo 
-                    title={todo.title}
-                    description={todo.description}
-                    key={todo.index}
-                    id={todo.id}
-                    delete={deleteTodoHandler}
-                    add={addTodoHandler}
+        <div>
+            <ul className="todos">
+                {todosList.map(todo => (
+                    <Todo 
+                        title={todo.title}
+                        description={todo.description}
+                        key={todo.index}
+                        id={todo.id}
+                        delete={deleteTodoHandler}
                     /> 
-                ))
-            }
+                ))}
+            </ul>
+            <Add add={addTodoHandler}/> 
         </div>
     );
 }
